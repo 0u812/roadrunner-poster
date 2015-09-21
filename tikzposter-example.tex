@@ -51,6 +51,8 @@
 \usecolorstyle[colorPalette=BrownBlueOrange,colorTwo=mybgcolor]
 {Germany}
 
+\usepackage{pgfplots}
+
 \usetikzlibrary{arrows,positioning}
 
  \begin{document}
@@ -79,8 +81,13 @@
         \node (machinecode)[right=of ircode] {Machine Code};
         \node (simplot)[right=of machinecode] {
           \begin{tikzpicture}
-            \draw[->] (0,0) -- (8,0) node[anchor=north] {$t$} ;
-            \draw[->] (0,0) -- (0,6) node[anchor=east]  {$f(t,p)$} ;
+            \begin{axis}[
+              xlabel=$t$,
+              domain=0:1,
+              legend pos=outer north east]
+              \addplot[smooth,mark=*,blue] {sin(deg((x*5)^2))};
+              \addlegendentry{$f(t,p)$}
+            \end{axis}
           \end{tikzpicture}
         };
       \end{tikzpicture}
