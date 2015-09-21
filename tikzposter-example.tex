@@ -38,14 +38,18 @@
  \newcommand{\cmd}[1]{{\bf \color{red}#1}}   % highlights command
 
  % Title, Author, Institute
- \title{Using tikzposter}
- \author{Pascal Richter, Elena Botoeva, Richard Barnard, \& Dirk Surmann}
- \institute{}
+ \title{LibRoadRunner: High-Performance Timecourse Simulation and Model Fitting}
+ \author{J. Kyle Medley, Wilbert Copeland, Kiri Choi, Kaylene Stocking and Herbert M. Sauro}
+ \institute{University of Washington, Seattle WA}
+ \titlegraphic{\includegraphics[scale=4.0]{SignatureLeftPurple.pdf}}
 
  % -- PREDEFINED THEMES ---------------------- %
  % Choose LAYOUT:  Default, Basic, Rays, Simple, Envelope, Wave, Board, Autumn, Desert,
  \usetheme{Autumn}
-\usecolorstyle[colorPalette=BrownBlueOrange]{Germany}
+\definecolor{mybannercolor}{rgb}{0.13, 0.055, 0.063}
+\definecolor{mybgcolor}{RGB}{232, 229, 206}
+\usecolorstyle[colorPalette=BrownBlueOrange,colorTwo=mybgcolor]
+{Germany}
 
 
  \begin{document}
