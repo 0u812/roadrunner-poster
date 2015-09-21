@@ -77,7 +77,12 @@
         \node (sbmllogo) {\includegraphics[scale=6.0]{sbml-logo.pdf}};
         \node (ircode)[right=of sbmllogo] {IR Code};
         \node (machinecode)[right=of ircode] {Machine Code};
-        \node (simplot)[right=of machinecode] {Plot};
+        \node (simplot)[right=of machinecode] {
+          \begin{tikzpicture}
+            \draw[->] (0,0) -- (8,0) node[anchor=north] {$t$} ;
+            \draw[->] (0,0) -- (0,6) node[anchor=east]  {$f(t,p)$} ;
+          \end{tikzpicture}
+        };
       \end{tikzpicture}
          \end{tikzfigure}
  \innerblock[]{Inner Blocks}{Inner blocks may be created inside of blocks with the command \bs\texttt{innerblock[{\it options}]\{{\it Heading}\}\{{\it Text}\}} }
