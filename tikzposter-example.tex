@@ -45,7 +45,7 @@
 
  % Title, Author, Institute
  \title{LibRoadRunner: High-Performance Timecourse Simulation and Model Fitting}
- \author{J. Kyle Medley, Wilbert Copeland, Kiri Choi, Kaylene Stocking and Herbert M. Sauro}
+ \author{J. Kyle Medley, Wilbert Copeland, Kiri Choi, Stanley Gu, Madhav Murthy, Kaylene Stocking and Herbert M. Sauro}
  \institute{University of Washington, Seattle WA}
  \titlegraphic{\includegraphics[scale=4.0]{SignatureLeftPurple.pdf}}
 
@@ -61,6 +61,8 @@
 \usepackage{verbatim}
 \usepackage{listings}
 \usepackage{tabularx}
+\usepackage{wrapfig}
+\usepackage{amssymb}
 
 \usetikzlibrary{arrows,positioning}
 
@@ -78,7 +80,7 @@
             rational design of synthetic systems (Elowitz, \textit{Nature} 2000),
             and whole-cell model simulation (Karr, \textit{Cell} 2012).
             Pushing the envelope of high-speed model simulation is key to exploring
-            more complex and diverse biological modeling endeavors.
+            more complex and diverse biological modeling approaches.
 
             \textbf{libRoadRunner} is designed to be a high-performance simulator and analysis
             library for SBML-encoded models.
@@ -193,22 +195,28 @@
 %          }
 
          \begin{subcolumns}
-             \subcolumn{.45}
-             \block{Subcolumns}{If you want to have an additional subdivision of columns inside a column, you may use the\\ \texttt{\bs subcolumns} environment inside of a column environment.  The functionality is similar to that of columns, but now the widths are relative to the width of the current column.}
+            \subcolumn{.45}
+            \block{Platform Support}
+            {By utilizing the diverse code generation targets included with LLVM,
+            we can deploy libRoadRunner on a variety of platforms, including embedded
+            RISC architectures such as ARM.
 
-             \subcolumn{.5}
-             \block{}{An example use of subcolumns is.
-                 \begin{quote}
-                     \texttt{\bs begin\{subcolumns\}\\
-                     \bs subcolumn\{.6\}\\
-                     \bs block\{\dots\}\{\dots\}\\
-                     \bs subcolumn\{.4\}\\
-                     \bs block\{\dots\}\{\dots\}\\
-                     \bs block\{\dots\}\{\dots\}\\
-                     \bs end\{subcolumns\}
-                     }
-             \end{quote}
-         }
+%             \vspace{2.5em}
+
+%             Utilizing a group of three networked NVidia TK-1 devices (right),
+%             we implemented an asynchronous, distributed computing engine based on
+%             the $\varnothing$MQ library. This capability is used to run simulation
+%             jobs in the
+            We have created a simulation queue service which recruits computing nodes to run extremely large numbers of simulations, which may drastically reduce the run-time necessary for certain types of analysis, such as Monte Carlo or evolutionary algorithms
+            }
+
+            \subcolumn{.5}
+            \block{}{
+              \begin{tikzfigure}[NVidia Jetson TK-1 (top) and Adapteva Parallella (bottom)]
+                \includegraphics[scale=0.10]{tk1cluster.jpg}
+                \includegraphics[scale=0.10]{parallella.jpg}
+              \end{tikzfigure}
+            }
          \end{subcolumns}
 
 %          \block[titlewidthscale=.8,bodywidthscale=.9,titleoffsety=9.5mm,bodyoffsety=9mm]{Changing the Poster's Appearance}{
