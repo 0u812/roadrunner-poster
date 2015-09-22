@@ -76,7 +76,7 @@
                  \bs maketitle}
              \\ \dots         \end{quote}
 
-         \begin{tikzfigure}[A figure can be made with \bs \texttt{tikzfigure}; \bs\texttt{figure} does not work]
+         \begin{tikzfigure}[The libRoadRunner native compilation pipeline]
           \begin{tikzpicture}[->,>=stealth',very thick]
             \node (sbmllogo) {\includegraphics[scale=6.0]{sbml-logo.pdf}};
             \node (ircode)[right= 3 of sbmllogo, align=left] {
@@ -120,8 +120,8 @@
             \node [below= of simplot] {\textbf{Simulation}} ;
           \end{tikzpicture}
          \end{tikzfigure}
- \innerblock[]{Inner Blocks}{Inner blocks may be created inside of blocks with the command \bs\texttt{innerblock[{\it options}]\{{\it Heading}\}\{{\it Text}\}} }
-            \coloredbox{Text may be highlighted using colored boxes created by \bs\texttt{coloredbox[{\it options}]\{{\it Text\}}}}
+ \innerblock[]{Native Performance}{libRoadRunner uses a non-tracing JIT to run simulations with the speed of a custom, model-specific executable}
+%             \coloredbox{Text may be highlighted using colored boxes created by \bs\texttt{coloredbox[{\it options}]\{{\it Text\}}}}
 
      }
      \note[targetoffsetx=-.05\textwidth,targetoffsety=9.5cm,innersep=.4cm,angle=-45,connection]{Optional arguments for the format of the poster}
@@ -190,21 +190,12 @@
          }
          \end{subcolumns}
 
-         \block[titlewidthscale=.8,bodywidthscale=.9,titleoffsety=9.5mm,bodyoffsety=9mm]{Changing the Poster's Appearance}{
-             If the default appearance of the title, background, blocks, and notes is not desired, you may change the colors by calling the color style along with a general layout theme with the commands
-             \begin{quote}
-       \texttt{\bs usecolorpalette}\{{\em color palette}\}\\
-                 \texttt{\bs usecolorstyle\{{\em color style}\}}
-             \end{quote}
-             and
-             \begin{quote}
-                 \texttt{\bs usetheme\{{\em layout style}\}}
-             \end{quote}
-             where the color palette and style and layout style are either the name of a custom made or one of the offered predefined choices listed in the manual or the comments of this poster's source.  Individual changes can be made to the style of the  background, title matter, blocks, inner blocks, and notes by using one of the following (along with either a custom-designed style or a predefined style listed in the manual or the comments of this poster's source).  These changes are made with the commands
-             \begin{quote}
-                 \texttt{\bs usebackgroundstyle[]\{\}, \bs usetitlestyle[]\{\},\\ \bs useblockstyle[]\{\},\bs innerblockstyle[]\{\}, \bs usenotestyle[]\{\}}
-             \end{quote}
-             Custom styles for these can be made; this is detailed in the manual.
+%          \block[titlewidthscale=.8,bodywidthscale=.9,titleoffsety=9.5mm,bodyoffsety=9mm]{Changing the Poster's Appearance}{
+         \block{Acknowledgments and Funding Sources}{
+             We wish to acknowledge Andy Somogyi for his extensive work on libRoadRunner
+             (in particular, for writing the LLVM simulation engine).
+             We also acknowledge Totte Karlsson for the original C\# to C++ translation, C compiler backend and C API, Stanley Gu for testing the library as a web service, Lucian Smith for developing part of the test suite, Michael Galdzicki for writing detailed build instructions and testing for developers.
+             This work was funded by generous support from NIH grant R01 GM081070. The content is solely the responsibility of the authors and does not necessarily represent the views of the National Institutes of Health.
           }
 
      \end{columns}
