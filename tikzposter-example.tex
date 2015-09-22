@@ -113,6 +113,11 @@
               (sbmllogo) edge[line width=5pt] node [left] {} (ircode)
               (ircode) edge [right,line width=5pt] node[left] {} (machinecode)
               (machinecode) edge [right,line width=5pt] node[left] {} (simplot) ;
+
+            \node [below= of sbmllogo] {\textbf{SBML Model Format}} ;
+            \node [below= of ircode] {\textbf{LLVM IR Code}} ;
+            \node [below= of machinecode] {\textbf{Native Machine Code}} ;
+            \node [below= of simplot] {\textbf{Simulation}} ;
           \end{tikzpicture}
          \end{tikzfigure}
  \innerblock[]{Inner Blocks}{Inner blocks may be created inside of blocks with the command \bs\texttt{innerblock[{\it options}]\{{\it Heading}\}\{{\it Text}\}} }
