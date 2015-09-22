@@ -60,6 +60,7 @@
 \usepackage{pgfplots}
 \usepackage{verbatim}
 \usepackage{listings}
+\usepackage{tabularx}
 
 \usetikzlibrary{arrows,positioning}
 
@@ -222,13 +223,29 @@
              (in particular, for writing the LLVM simulation engine).
              We also acknowledge Totte Karlsson for the original C\# to C++ translation, C compiler backend and C API, Stanley Gu for testing the library as a web service, Lucian Smith for developing part of the test suite, Michael Galdzicki for writing detailed build instructions and testing for developers.
              This work was funded by generous support from NIH grant R01 GM081070. The content is solely the responsibility of the authors and does not necessarily represent the views of the National Institutes of Health.
+
+             \vspace{2em}
+
+             Logos are copyright their respective owners.
           }
 
      \end{columns}
 
      \block[]{}{
 %      \block[titleoffsety=-1cm,bodyoffsety=-1cm]{Sample document}{
-      \includegraphics[scale=0.35]{libroadrunner_logo_tan.jpg}
+      \resizebox{0.95\textwidth}{!}{ %http://tex.stackexchange.com/questions/121155/how-to-adjust-a-table-to-fit-on-page
+        \includegraphics[scale=0.35]{libroadrunner_logo_tan.jpg}
+        \hspace{10em}
+        \includegraphics[scale=5.0]{sbml-logo.pdf}
+        \hspace{10em}
+        \includegraphics[scale=0.8]{SEDMLlogo.png}
+        \hspace{10em}
+        \includegraphics[scale=0.17]{LLVMLogoTight.pdf}
+        \hspace{10em}
+        \includegraphics[scale=5.0]{sbml-logo.pdf}
+        \hspace{10em}
+        \includegraphics[scale=5.0]{sbml-logo.pdf}
+      }
 %      \vspace{2em}
 %          This poster was created by the following commands (omitting the contents of the blocks and notes) to give a sense of how different objects are created and options used.
 %          \begin{quote}
