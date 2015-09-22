@@ -145,22 +145,16 @@
 %             \coloredbox{Text may be highlighted using colored boxes created by \bs\texttt{coloredbox[{\it options}]\{{\it Text\}}}}
 
      }
-     \block{Blocks}{
-         Blocks are arranged in a grid, by default, with width by default \texttt{\bs textwdith}.  They are created by the command
-         \begin{quote}
-             \bs\texttt{block [{\it options}] \{{\it title}\}\{{\it contents}\}}
-         \end{quote}
-         The title may be left empty, resulting in no title area being created for the block (as seen in a later block to the right).  Further blocks will be placed below automatically, at a distance defined by \texttt{blockverticalspace}.
+     \block{Model Fitting}{
+         libRoadRunner's performance allows for the use of expensive fitting and optimization algorithms.
+         We have used libRoadRunner to optimize a dye-binding model for quantifying promoter activity
+         using \textbf{differential evolution}, a heuristic optimization method.
 
-         If you want to change the position of the title matter or the contents in the block, you may by setting in the options
-         \begin{quote}
-             \texttt{titleoffsetx, titleoffsety, bodyoffsetx, bodyoffsety}
-         \end{quote}
-         which let you adjust the vertical or horizontal position of the two parts of the block, respectively.  You can also make, relative to the default width, the title and block body by setting
-         \begin{quote}
-             \texttt{titlewidthscale, bodywidthscale}
-         \end{quote}
-         The title's alignment can be set by \texttt{titleleft, titlecenter, titleright}, the body may be shifted vertically by setting \texttt{bodyverticalshift}, and the shape of the block can be altered by setting \texttt{roundedcorners, linewidth}. The inner margins of the title can by set by \texttt{titleinnersep,bodyinnersep}.
+          \begin{tikzfigure}[Malachite green aptamer model and plot courtesy of Wilbert Copeland]
+            \includegraphics[scale=0.8]{figure1.png}
+            \hspace{8em}
+            \includegraphics[scale=0.8]{SystemDiagramWC083115.png}
+          \end{tikzfigure}
      }
 
 %      \note[targetoffsetx=24cm, targetoffsety=-9cm,rotate=1,angle=270,radius=8cm,width=.75\textwidth,innersep=.4cm]{
