@@ -30,6 +30,12 @@
 
  \documentclass[25pt, a0paper, landscape, margin=0mm, innermargin=15mm,
      blockverticalspace=15mm, colspace=15mm, subcolspace=8mm]{tikzposter} %Default values for poster format options.
+% \usepackage{lmodern}
+% \makeatletter
+% \input{theguy36pt.clo}
+% \makeatother
+% \usepackage{blindtext}
+% \block{Walzing Wombat}{\blindtext}
 
  \tikzposterlatexaffectionproofon %shows small comment on how the poster was made at bottom of poster
 
@@ -63,68 +69,77 @@
 
      \begin{columns}%blocks will be placed into columns
          \column{.55}
-         \block[roundedcorners=40]{Creating the document}{
-             The document begins with:
-             \begin{quote}
-                 \texttt{\bs documentclass[25pt, a0paper, landscape, margin=10mm, innermargin=15mm,
-                 blockverticalspace=15mm, colspace=15mm, subcolspace=8mm]\{tikzposter\}\\
-                 \bs title\{Title\}\\
-                 \bs author\{Author(s)\}\\
-                 \bs institute\{Institute \}\\
-                 \bs titlegraphic\{Logo\}\\
-                 \bs begin\{document\}\\
-                 \bs maketitle}
-             \\ \dots         \end{quote}
+         \block[roundedcorners=40]{Introduction}{
+          {
+            \Large
+            Timecourse simulation of kinetic models is an extremely important tool
+            in biology, and has found applications in pharmacology (PK/PD models),
+            rational design of synthetic systems (Elowitz, \textit{Nature} 2000),
+            and whole-cell model simulation (Karr, \textit{Cell} 2012).
+            Pushing the envelope of high-speed model simulation is key to exploring
+            more complex and diverse biological modeling endeavors.
 
-         \begin{tikzfigure}[The libRoadRunner native compilation pipeline]
-          \begin{tikzpicture}[->,>=stealth',very thick]
-            \node (sbmllogo) {\includegraphics[scale=6.0]{sbml-logo.pdf}};
-            \node (ircode)[right= 3 of sbmllogo, align=left] {
-            \small\texttt{define internal double}\\
-            \small\texttt{@getFloatingSpeciesConcentration}\\
-            \small\texttt{(\%rr\_LLVMModelData* \%modelData, i32 }\\
-            \small\texttt{entry: switch i32 \%floatingSpeciesIndex}
-            };
-            \node (machinecode)[right= 3 of ircode, align=left] {
-            \small\texttt{  7c2b20:  55                    push   \%rbp}\\
-            \small\texttt{  7c2b21: 48 89 e5              mov    \%rsp,\%rbp}\\
-            \small\texttt{  7c2b2e: 5d                    pop    \%rbp}\\
-            \small\texttt{  7c2b2f: c3                    retq}
-            };
-            \node (simplot)[right= 3 of machinecode] {
-              \begin{tikzpicture}
-                \begin{axis}[
-                  width=0.10\textwidth,
-                  height=0.09\textheight,
-                  xlabel=$t$,
-                  domain=0:1,
-                  xtick=\empty,%{0,0.25,0.75,1},
-                  ytick=\empty,
-                  axis lines = middle,
-                  enlargelimits = true,
-                  axis line style = very thick] %http://tex.stackexchange.com/questions/237709/pgfplots-ignores-thick-option-for-axes
-                  \addplot[smooth,mark=*,blue] {x^2*(1+sin(deg((x*5)^2)))};
-                  \addlegendentry{$f(t,p)$}
-                \end{axis}
-              \end{tikzpicture}
-            };
+            libRoadRunner is designed to be a high-performance simulator and analysis
+            library for SBML-encoded models.
+            To facilitate maximum performance, libRoadRunner makes use of the LLVM library
+            (\texttt{llvm.org}) to compile models down to native code which can be
+            executed directly on the target CPU.
 
-            \path
-              (sbmllogo) edge[line width=5pt] node [left] {} (ircode)
-              (ircode) edge [right,line width=5pt] node[left] {} (machinecode)
-              (machinecode) edge [right,line width=5pt] node[left] {} (simplot) ;
+            By using an open and transparent development process, making our source code
+            freely available, and working extensively with our collaborators through
+            one-week workshops, we have enabled widespread access to this powerful
+            modeling tool.
+          }
 
-            \node [below= of sbmllogo] {\textbf{SBML Model Format}} ;
-            \node [below= of ircode] {\textbf{LLVM IR Code}} ;
-            \node [below= of machinecode] {\textbf{Native Machine Code}} ;
-            \node [below= of simplot] {\textbf{Simulation}} ;
-          \end{tikzpicture}
-         \end{tikzfigure}
- \innerblock[]{Native Performance}{libRoadRunner uses a non-tracing JIT to run simulations with the speed of a custom, model-specific executable}
+          \begin{tikzfigure}[The libRoadRunner native compilation pipeline]
+            \begin{tikzpicture}[->,>=stealth',very thick]
+              \node (sbmllogo) {\includegraphics[scale=6.0]{sbml-logo.pdf}};
+              \node (ircode)[right= 3 of sbmllogo, align=left] {
+              \small\texttt{define internal double}\\
+              \small\texttt{@getFloatingSpeciesConcentration}\\
+              \small\texttt{(\%rr\_LLVMModelData* \%modelData, i32 }\\
+              \small\texttt{entry: switch i32 \%floatingSpeciesIndex}
+              };
+              \node (machinecode)[right= 3 of ircode, align=left] {
+              \small\texttt{  7c2b20:  55                    push   \%rbp}\\
+              \small\texttt{  7c2b21: 48 89 e5              mov    \%rsp,\%rbp}\\
+              \small\texttt{  7c2b2e: 5d                    pop    \%rbp}\\
+              \small\texttt{  7c2b2f: c3                    retq}
+              };
+              \node (simplot)[right= 3 of machinecode] {
+                \begin{tikzpicture}
+                  \begin{axis}[
+                    width=0.10\textwidth,
+                    height=0.09\textheight,
+                    xlabel=$t$,
+                    domain=0:1,
+                    xtick=\empty,%{0,0.25,0.75,1},
+                    ytick=\empty,
+                    axis lines = middle,
+                    enlargelimits = true,
+                    axis line style = very thick] %http://tex.stackexchange.com/questions/237709/pgfplots-ignores-thick-option-for-axes
+                    \addplot[smooth,mark=*,blue] {x^2*(1+sin(deg((x*5)^2)))};
+                    \addlegendentry{$f(t,p)$}
+                  \end{axis}
+                \end{tikzpicture}
+              };
+
+              \path
+                (sbmllogo) edge[line width=5pt] node [left] {} (ircode)
+                (ircode) edge [right,line width=5pt] node[left] {} (machinecode)
+                (machinecode) edge [right,line width=5pt] node[left] {} (simplot) ;
+
+              \node [below= of sbmllogo] {\textbf{SBML Model Format}} ;
+              \node [below= of ircode] {\textbf{LLVM IR Code}} ;
+              \node [below= of machinecode] {\textbf{Native Machine Code}} ;
+              \node [below= of simplot] {\textbf{Simulation}} ;
+            \end{tikzpicture}
+          \end{tikzfigure}
+          \innerblock[]{Native Performance}{libRoadRunner uses a non-tracing JIT to run simulations with the speed of a custom, model-specific executable}
 %             \coloredbox{Text may be highlighted using colored boxes created by \bs\texttt{coloredbox[{\it options}]\{{\it Text\}}}}
 
      }
-     \note[targetoffsetx=-.05\textwidth,targetoffsety=9.5cm,innersep=.4cm,angle=-45,connection]{Optional arguments for the format of the poster}
+%      \note[targetoffsetx=-.05\textwidth,targetoffsety=9.5cm,innersep=.4cm,angle=-45,connection]{Optional arguments for the format of the poster}
      \block{The title matter}{
          The title is made by the standard \texttt{\bs maketitle[{\it options}]} command where you can alter the \texttt{width}, the spacing between the title and top of the poster (\texttt{titletotopverticalspace}), the bottom of the title to the main content of the poster (\texttt{titletoblockverticalspace}) and the space between the title information and the logo (\texttt{titlegraphictotitleverticalspace}).
 
