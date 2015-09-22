@@ -85,13 +85,13 @@
             \small\texttt{(\%rr\_LLVMModelData* \%modelData, i32 }\\
             \small\texttt{entry: switch i32 \%floatingSpeciesIndex}
             };
-            \node (machinecode)[right=of ircode, align=left] {
+            \node (machinecode)[right= 3 of ircode, align=left] {
             \small\texttt{  7c2b20:  55                    push   \%rbp}\\
             \small\texttt{  7c2b21: 48 89 e5              mov    \%rsp,\%rbp}\\
             \small\texttt{  7c2b2e: 5d                    pop    \%rbp}\\
             \small\texttt{  7c2b2f: c3                    retq}
             };
-            \node (simplot)[right=of machinecode] {
+            \node (simplot)[right= 3 of machinecode] {
               \begin{tikzpicture}
                 \begin{axis}[
                   width=0.10\textwidth,
@@ -110,7 +110,9 @@
             };
 
             \path
-              (sbmllogo) edge[line width=5pt] node [left] {} (ircode) ;
+              (sbmllogo) edge[line width=5pt] node [left] {} (ircode)
+              (ircode) edge [right,line width=5pt] node[left] {} (machinecode)
+              (machinecode) edge [right,line width=5pt] node[left] {} (simplot) ;
           \end{tikzpicture}
          \end{tikzfigure}
  \innerblock[]{Inner Blocks}{Inner blocks may be created inside of blocks with the command \bs\texttt{innerblock[{\it options}]\{{\it Heading}\}\{{\it Text}\}} }
