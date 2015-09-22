@@ -52,6 +52,8 @@
 {Germany}
 
 \usepackage{pgfplots}
+\usepackage{verbatim}
+\usepackage{listings}
 
 \usetikzlibrary{arrows,positioning}
 
@@ -77,7 +79,12 @@
          \begin{tikzfigure}[A figure can be made with \bs \texttt{tikzfigure}; \bs\texttt{figure} does not work]
       \begin{tikzpicture}
         \node (sbmllogo) {\includegraphics[scale=6.0]{sbml-logo.pdf}};
-        \node (ircode)[right=of sbmllogo] {IR Code};
+        \node (ircode)[right=of sbmllogo, align=left] {
+        \small\texttt{define internal double}\\
+        \small\texttt{@getFloatingSpeciesConcentration}\\
+        \small\texttt{(\%rr\_LLVMModelData* \%modelData, i32 }\\
+        \small\texttt{entry: switch i32 \%floatingSpeciesIndex}
+        };
         \node (machinecode)[right=of ircode] {Machine Code};
         \node (simplot)[right=of machinecode] {
           \begin{tikzpicture}
