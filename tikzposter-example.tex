@@ -77,41 +77,41 @@
              \\ \dots         \end{quote}
 
          \begin{tikzfigure}[A figure can be made with \bs \texttt{tikzfigure}; \bs\texttt{figure} does not work]
-      \begin{tikzpicture}
-        \node (sbmllogo) {\includegraphics[scale=6.0]{sbml-logo.pdf}};
-        \node (ircode)[right=of sbmllogo, align=left] {
-        \small\texttt{define internal double}\\
-        \small\texttt{@getFloatingSpeciesConcentration}\\
-        \small\texttt{(\%rr\_LLVMModelData* \%modelData, i32 }\\
-        \small\texttt{entry: switch i32 \%floatingSpeciesIndex}
-        };
-        \node (machinecode)[right=of ircode, align=left] {
-        \small\texttt{  7c2b20:  55                    push   \%rbp}\\
-        \small\texttt{  7c2b21: 48 89 e5              mov    \%rsp,\%rbp}\\
-%         \small\texttt{  7c2b24: e8 77 ff ff ff        callq  7c2aa0 <\_\_cxx\_global\_var\_init>}\\
-%         \small\texttt{  7c2b29: e8 b2 ff ff ff        callq  7c2ae0 <\_\_cxx\_global\_var\_init1>}\\
-        \small\texttt{  7c2b2e: 5d                    pop    \%rbp}\\
-        \small\texttt{  7c2b2f: c3                    retq}
-        };
-        \node (simplot)[right=of machinecode] {
-          \begin{tikzpicture}
-            \begin{axis}[
-              width=0.10\textwidth,
-              height=0.09\textheight,
-              xlabel=$t$,
-              domain=0:1,
-              xtick=\empty,%{0,0.25,0.75,1},
-              ytick=\empty,
-              axis lines = middle,
-              enlargelimits = true,
-              legend pos=outer north east,
-              axis line style = very thick] %http://tex.stackexchange.com/questions/237709/pgfplots-ignores-thick-option-for-axes
-              \addplot[smooth,mark=*,blue] {x^2*(1+sin(deg((x*5)^2)))};
-              \addlegendentry{$f(t,p)$}
-            \end{axis}
+          \begin{tikzpicture}[->,>=stealth',very thick]
+            \node (sbmllogo) {\includegraphics[scale=6.0]{sbml-logo.pdf}};
+            \node (ircode)[right= 3 of sbmllogo, align=left] {
+            \small\texttt{define internal double}\\
+            \small\texttt{@getFloatingSpeciesConcentration}\\
+            \small\texttt{(\%rr\_LLVMModelData* \%modelData, i32 }\\
+            \small\texttt{entry: switch i32 \%floatingSpeciesIndex}
+            };
+            \node (machinecode)[right=of ircode, align=left] {
+            \small\texttt{  7c2b20:  55                    push   \%rbp}\\
+            \small\texttt{  7c2b21: 48 89 e5              mov    \%rsp,\%rbp}\\
+            \small\texttt{  7c2b2e: 5d                    pop    \%rbp}\\
+            \small\texttt{  7c2b2f: c3                    retq}
+            };
+            \node (simplot)[right=of machinecode] {
+              \begin{tikzpicture}
+                \begin{axis}[
+                  width=0.10\textwidth,
+                  height=0.09\textheight,
+                  xlabel=$t$,
+                  domain=0:1,
+                  xtick=\empty,%{0,0.25,0.75,1},
+                  ytick=\empty,
+                  axis lines = middle,
+                  enlargelimits = true,
+                  axis line style = very thick] %http://tex.stackexchange.com/questions/237709/pgfplots-ignores-thick-option-for-axes
+                  \addplot[smooth,mark=*,blue] {x^2*(1+sin(deg((x*5)^2)))};
+                  \addlegendentry{$f(t,p)$}
+                \end{axis}
+              \end{tikzpicture}
+            };
+
+            \path
+              (sbmllogo) edge[line width=5pt] node [left] {} (ircode) ;
           \end{tikzpicture}
-        };
-      \end{tikzpicture}
          \end{tikzfigure}
  \innerblock[]{Inner Blocks}{Inner blocks may be created inside of blocks with the command \bs\texttt{innerblock[{\it options}]\{{\it Heading}\}\{{\it Text}\}} }
             \coloredbox{Text may be highlighted using colored boxes created by \bs\texttt{coloredbox[{\it options}]\{{\it Text\}}}}
