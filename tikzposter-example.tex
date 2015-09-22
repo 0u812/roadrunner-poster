@@ -134,7 +134,7 @@
                 (ircode) edge [right,line width=5pt] node[left] {} (machinecode)
                 (machinecode) edge [right,line width=5pt] node[left] {} (simplot) ;
 
-              \node [below= of sbmllogo] {\textbf{SBML Model Format}} ;
+              \node [below= of sbmllogo] {\textbf{SBML Model}} ;
               \node [below= of ircode] {\textbf{LLVM IR Code}} ;
               \node [below= of machinecode] {\textbf{Native Machine Code}} ;
               \node [below= of simplot] {\textbf{Simulation}} ;
@@ -143,8 +143,10 @@
 
           \vspace{50pt}
 
-          \innerblock[]{Native Performance}{libRoadRunner uses a non-tracing JIT to run simulations with the speed of a custom, model-specific executable}
+          \innerblock[]{Native Performance}{libRoadRunner uses a non-tracing JIT to run simulations with the speed of a native executable}
 %             \coloredbox{Text may be highlighted using colored boxes created by \bs\texttt{coloredbox[{\it options}]\{{\it Text\}}}}
+
+          \vspace{1.5em}
 
      }
      \block{Model Fitting}{
@@ -165,9 +167,10 @@
 %          The note is placed by default slightly to the right of a ``target'' in the center of the previous block.  The note style may also allow for a connection between the note and the ``target''.  \\
 %          The target may be shifted from the default by setting the options  \texttt{targetoffsetx, targetoffsety}, rotated by an angle with \texttt{rotate}, and its width with \texttt{width}.  The placement of the note in relation with the target is given in polar coordinates with \texttt{ radius, angle}. Please observe that notes are always drawn {\bf over} the other objects. They do not affect the placement of blocks.
 %       }
+     \note[targetoffsetx=18cm,targetoffsety=-3cm,innersep=.4cm,angle=-45,connection]{A model predicts aptamer state based on kinetic parameters}
+     \note[targetoffsetx=-4cm,targetoffsety=-1.5cm,innersep=.4cm,angle=45,connection]{Parameters can be fitted from fluorescence data}
 
     \column{.45}
-%      \note[targetoffsetx=-.05\textwidth,targetoffsety=9.5cm,innersep=.4cm,angle=-45,connection]{Optional arguments for the format of the poster}
       \block{Under the Hood}{
           Our C++ library features a modular design, allowing effortless upgrades to its internal architecture.
           The library features pure, abstract base classes for \textbf{integrators} and \textbf{steady-state solvers}.
@@ -207,7 +210,7 @@
 %             we implemented an asynchronous, distributed computing engine based on
 %             the $\varnothing$MQ library. This capability is used to run simulation
 %             jobs in the
-            We have created a simulation queue service which recruits computing nodes to run extremely large numbers of simulations, which may drastically reduce the run-time necessary for certain types of analysis, such as Monte Carlo or evolutionary algorithms
+            We have created a simulation queue service which recruits computing nodes to run extremely large numbers of simulations, which may drastically reduce the run-time necessary for certain types of analysis, such as Monte Carlo or evolutionary algorithms.
             }
 
             \subcolumn{.5}
@@ -230,7 +233,7 @@
 
             We wish to acknowledge Andy Somogyi for his extensive work on libRoadRunner
             (in particular, for writing the LLVM simulation engine).
-            We also acknowledge Totte Karlsson for the original C\# to C++ translation, C compiler backend and C API, Stanley Gu for testing the library as a web service, Lucian Smith for developing part of the test suite, and Michael Galdzicki for writing detailed build instructions and testing for developers.
+            We also acknowledge Totte Karlsson for the original C\# to C++ translation, C compiler backend and C API, Lucian Smith for developing part of the test suite, and Michael Galdzicki for writing detailed build instructions and testing for developers.
             This work was funded by generous support from NIH grant R01 GM081070. The content is solely the responsibility of the authors and does not necessarily represent the views of the National Institutes of Health.
 
             \vspace{1em}
